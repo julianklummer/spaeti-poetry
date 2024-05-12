@@ -11,7 +11,7 @@ async function getData(): Promise<any[]> {
   return contributionList;
 }
 
-export async function Admin() {
+export default async function Admin() {
   const data = await getData();
 
   return <>{JSON.stringify(data)}</>;
