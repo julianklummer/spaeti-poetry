@@ -6,6 +6,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const store = getStore("constributions");
-  await store.set("1", "text 1");
-  res.status(200).json({ message: "Set text 1" });
+  const data = await store.get("1");
+  res.status(200).json({ message: JSON.stringify(data) });
 }
