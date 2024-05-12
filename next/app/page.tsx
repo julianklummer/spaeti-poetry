@@ -1,7 +1,7 @@
+"use server";
 import { getStore } from "@netlify/blobs";
 import styles from "./page.module.css";
 
-("use server");
 export default function Home() {
   const handleSubmission = async (formData: FormData) => {
     const text = formData.get("text");

@@ -1,6 +1,6 @@
+"use server";
 import { getStore } from "@netlify/blobs";
 
-("use server");
 async function getData(): Promise<any[]> {
   const store = getStore("constributions");
   const contributionList: any[] = [];
