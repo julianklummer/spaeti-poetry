@@ -1,0 +1,9 @@
+services:
+  node:
+    image: node:20
+    volumes: ["./next:/next"]
+    working_dir: /next
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    command: ["npm", "run", "dev"]
