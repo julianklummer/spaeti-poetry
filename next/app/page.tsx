@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 
 export default async function Home() {
   const contributionList = await getContributionList();
+
   const handleSubmission = async (formData: FormData) => {
     "use server";
     const text = formData.get("text") as string;
