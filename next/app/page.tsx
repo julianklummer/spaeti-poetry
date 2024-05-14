@@ -1,6 +1,8 @@
 import { handleSubmission } from "./actions";
 import styles from "./page.module.css";
 
+export const dynamic = "force-dynamic";
+
 const getData = async () => {
   const res = await fetch(`${process.env.SITE_BASE_URL}/api/contributions`, {
     cache: "no-cache",
