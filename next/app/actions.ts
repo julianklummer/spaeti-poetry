@@ -1,23 +1,23 @@
 "use server";
 
-import { getStore } from "@netlify/blobs";
+import { db } from "@/db/db";
 
 export const getContributionList = async (): Promise<any[]> => {
-  const store = getStore("constributions");
-  const contributionList: any[] = [];
-
-  for await (const entry of store.list({ paginate: true })) {
-    entry.blobs.forEach((blob) => contributionList.push(blob));
-  }
-
-  return contributionList;
+  return new Promise((resolve, reject) => {
+    db.all(`SELECT * FROM contributions`, [], (err, rows) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(rows);
+    });
+  });
 };
 
 export const submitContribution = async (text: string) => {
-  const store = getStore("constributions");
-  const timeStamp = new Date().getTime();
-
-  if (text) {
-    await store.set(String(timeStamp), text);
-  }
+  db.run(`INSERT INTO contributions (text) VALUES (?)`, [text], function (err) {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log(`A row has been inserted with rowid ${this.lastID}`);
+  });
 };
