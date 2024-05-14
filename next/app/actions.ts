@@ -10,12 +10,8 @@ const store = getStore({
 });
 
 export const getContributionList = async (): Promise<any[]> => {
-  const contributionList: any[] = [];
-
-  for await (const entry of store.list({ paginate: true })) {
-    entry.blobs.forEach((blob) => contributionList.push(blob));
-  }
-
+  const res = await fetch(`${process.env.SITE_BASE_URL}/api/contributions`);
+  const { contributionList } = await res.json();
   return contributionList;
 };
 
@@ -29,6 +25,11 @@ export const submitContribution = async (text: string) => {
 
 export const handleSubmission = async (formData: FormData) => {
   const text = formData.get("text") as string;
-  if (text.length) submitContribution(text);
+  if (text.length) {
+    await fetch(`${process.env.SITE_BASE_URL}/api/contributions`, {
+      method: "POST",
+      body: JSON.stringify({ text }),
+    });
+  }
   revalidatePath("/");
 };
