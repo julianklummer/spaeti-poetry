@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 //   token: process.env.NETLIFY_ACCESS_TOKEN,
 // });
 
-export const getData = async () => {
+const getData = async () => {
   // const contributionList: any[] = [];
 
   // for await (const entry of store.list({ paginate: true })) {
