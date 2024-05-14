@@ -2,8 +2,13 @@
 
 import { getStore } from "@netlify/blobs";
 
+const store = getStore({
+  name: "constributions",
+  siteID: process.env.NETLIFY_SITE_ID,
+  token: process.env.NETLIFY_ACCESS_TOKEN,
+});
+
 export const getContributionList = async (): Promise<any[]> => {
-  const store = getStore("constributions");
   const contributionList: any[] = [];
 
   for await (const entry of store.list({ paginate: true })) {
@@ -14,7 +19,6 @@ export const getContributionList = async (): Promise<any[]> => {
 };
 
 export const submitContribution = async (text: string) => {
-  const store = getStore("constributions");
   const timeStamp = new Date().getTime();
 
   if (text) {
