@@ -1,8 +1,16 @@
-import { getContributionList, handleSubmission } from "./actions";
+import { handleSubmission } from "./actions";
 import styles from "./page.module.css";
 
+const getData = async () => {
+  const res = await fetch(`${process.env.SITE_BASE_URL}/api/contributions`, {
+    cache: "no-cache",
+  });
+  const { contributionList } = await res.json();
+  return contributionList;
+};
+
 export default async function Home() {
-  const contributionList = await getContributionList();
+  const contributionList: any[] = await getData();
 
   return (
     <main className={styles.main}>
