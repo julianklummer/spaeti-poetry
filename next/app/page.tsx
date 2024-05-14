@@ -1,15 +1,26 @@
+import { getStore } from "@netlify/blobs";
 import { handleSubmission } from "./actions";
 import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
+const store = getStore({
+  name: "constributions",
+  siteID: process.env.NETLIFY_SITE_ID,
+  token: process.env.NETLIFY_ACCESS_TOKEN,
+});
+
 const getData = async () => {
-  return [];
+  const contributionList: any[] = [];
+
+  for await (const entry of store.list({ paginate: true })) {
+    entry.blobs.forEach((blob) => contributionList.push(blob));
+  }
   // const res = await fetch(`${process.env.SITE_BASE_URL}/api/contributions`, {
   //   cache: "no-cache",
   // });
   // const { contributionList } = await res.json();
-  // return contributionList;
+  return contributionList;
 };
 
 export default async function Home() {
