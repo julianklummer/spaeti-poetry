@@ -18,7 +18,7 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const { body: text } = await req.json();
+  const { text } = await req.json();
   if (text.length) {
     await store.set(String(new Date().getTime()), text);
   }
