@@ -32,7 +32,7 @@ export default async function Home() {
     <main className={styles.main}>
       <ul>
         {contributionList.map((contribution, index) => {
-          return <li key={index}>{JSON.stringify(contribution)}</li>;
+          return <li key={index}>{contribution}</li>;
         })}
       </ul>
       <form action={handleSubmission}>
