@@ -15,10 +15,10 @@ export default async function handler(
     if (req.body.text?.length) {
       await store.set(String(new Date().getTime()), req.body.text);
       res.status(200);
-      res.send({ Success: true });
+      res.json({ Success: true });
     } else {
       res.status(400);
-      res.send({ Success: false });
+      res.json({ Success: false });
     }
   } else if (req.method === "GET") {
     const contributionList: any[] = [];
