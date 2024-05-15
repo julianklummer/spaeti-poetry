@@ -24,3 +24,12 @@ export async function POST(req: Request) {
 
   return Response.json({ Success: true });
 }
+
+export async function DELETE(req: Request) {
+  const { key } = await req.json();
+  if (key.length) {
+    await store.delete(key);
+  }
+
+  return Response.json({ Success: true });
+}

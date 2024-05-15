@@ -16,7 +16,10 @@ export const handler: Handler = async (
   for await (const entry of store.list({ paginate: true })) {
     for await (const blob of entry.blobs) {
       const value = await store.get(blob.key);
-      contributionList.push(value);
+      contributionList.push({
+        key: blob.key,
+        value,
+      });
     }
   }
 
