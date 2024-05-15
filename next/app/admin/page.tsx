@@ -26,7 +26,9 @@ export default async function Page() {
             return (
               <li key={index}>
                 {contribution.value}
-                <button onClick={() => handleDeletion(contribution.key)}>
+                <button
+                  onClick={async () => await handleDeletion(contribution.key)}
+                >
                   delete
                 </button>
               </li>
