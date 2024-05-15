@@ -6,16 +6,17 @@ type Props = {
   key?: string;
   value: string;
   withDelete: boolean;
-  handleDelete?: () => void;
 };
 
 export const Contribution: React.FC<Props> = ({ key, value, withDelete }) => {
+  const renderDeleteButton = () => (
+    <button onClick={async () => handleDeletion(key)}>delete</button>
+  );
+
   return (
     <div>
       {value}
-      {withDelete && key ? (
-        <button onClick={async () => handleDeletion(key)}>delete</button>
-      ) : null}
+      {withDelete && key ? renderDeleteButton() : null}
     </div>
   );
 };
