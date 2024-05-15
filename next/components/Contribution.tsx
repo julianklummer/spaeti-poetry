@@ -3,20 +3,20 @@
 import { handleDeletion } from "@/app/actions";
 
 type Props = {
-  key?: string;
-  value: string;
+  data: {
+    key: string;
+    value: string;
+  };
   withDelete: boolean;
 };
 
-export const Contribution: React.FC<Props> = ({ key, value, withDelete }) => {
-  const renderDeleteButton = () => (
-    <button onClick={async () => handleDeletion(key)}>delete</button>
-  );
-
+export const Contribution: React.FC<Props> = ({ data, withDelete }) => {
   return (
     <div>
-      {value}
-      {withDelete && key ? renderDeleteButton() : null}
+      {data.value}
+      {withDelete ? (
+        <button onClick={async () => handleDeletion(data.key)}>delete</button>
+      ) : null}
     </div>
   );
 };

@@ -15,17 +15,17 @@ const getData = async () => {
 };
 
 export default async function Page() {
-  const contributionList: any[] = await getData();
+  const contributionList: { key: string; value: string }[] = await getData();
   const isAuthorized = cookies().get("authorization")?.value === "true";
 
   if (isAuthorized) {
     return (
       <main>
         <ul>
-          {contributionList.map(({ key, value }, index) => {
+          {contributionList.map((contribution, index) => {
             return (
-              <li key={index + key}>
-                <Contribution key={key} value={value} withDelete={true} />
+              <li key={index + contribution.key}>
+                <Contribution data={contribution} withDelete={true} />
               </li>
             );
           })}

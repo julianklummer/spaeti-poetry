@@ -21,11 +21,11 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <ul>
-        {contributionList.map(({ key, value }, index) => {
+        {contributionList.map((contribution, index) => {
           return (
             <li key={index}>
-              <li key={index + key}>
-                <Contribution value={value} withDelete={false} />
+              <li key={index + contribution.key}>
+                <Contribution data={contribution} withDelete={false} />
               </li>
             </li>
           );
