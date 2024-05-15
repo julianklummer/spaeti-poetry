@@ -1,3 +1,4 @@
+import { Contribution } from "@/components/Contribution";
 import { handleSubmission } from "./actions";
 import styles from "./page.module.css";
 
@@ -15,13 +16,19 @@ const getData = async () => {
 };
 
 export default async function Home() {
-  const contributionList: any[] = await getData();
+  const contributionList: { key: string; value: string }[] = await getData();
 
   return (
     <main className={styles.main}>
       <ul>
-        {contributionList.map((contribution, index) => {
-          return <li key={index}>{contribution.value}</li>;
+        {contributionList.map(({ key, value }, index) => {
+          return (
+            <li key={index}>
+              <li key={index + key}>
+                <Contribution value={value} withDelete={false} />
+              </li>
+            </li>
+          );
         })}
       </ul>
       <form action={handleSubmission}>

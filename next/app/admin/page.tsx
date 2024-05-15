@@ -1,3 +1,4 @@
+import { Contribution } from "@/components/Contribution";
 import { cookies } from "next/headers";
 import { handleDeletion } from "../actions";
 
@@ -22,15 +23,14 @@ export default async function Page() {
     return (
       <main>
         <ul>
-          {contributionList.map((contribution, index) => {
+          {contributionList.map(({ key, value }, index) => {
             return (
-              <li key={index}>
-                {contribution.value}
-                <button
-                  onClick={async () => await handleDeletion(contribution.key)}
-                >
-                  delete
-                </button>
+              <li key={index + key}>
+                <Contribution
+                  value={value}
+                  withDelete={true}
+                  handleDelete={async () => await handleDeletion(key)}
+                />
               </li>
             );
           })}
