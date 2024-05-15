@@ -1,6 +1,5 @@
 import { Contribution } from "@/components/Contribution";
 import { cookies } from "next/headers";
-import { handleDeletion } from "../actions";
 
 export const dynamic = "force-dynamic";
 
@@ -26,11 +25,7 @@ export default async function Page() {
           {contributionList.map(({ key, value }, index) => {
             return (
               <li key={index + key}>
-                <Contribution
-                  value={value}
-                  withDelete={true}
-                  handleDelete={async () => await handleDeletion(key)}
-                />
+                <Contribution key={key} value={value} withDelete={true} />
               </li>
             );
           })}
