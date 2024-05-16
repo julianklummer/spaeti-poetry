@@ -1,4 +1,5 @@
 import { Contribution } from "@/components/Contribution";
+import { SubmitButton } from "@/components/SubmitButton";
 import { handleSubmission } from "./actions";
 import styles from "./page.module.css";
 
@@ -33,7 +34,7 @@ export default async function Home() {
       </ul>
       <form action={handleSubmission}>
         <input type="text" name="text" />
-        <button type="submit">Submit</button>
+        <SubmitButton />
       </form>
     </main>
   );
