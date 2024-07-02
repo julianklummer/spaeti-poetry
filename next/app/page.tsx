@@ -6,6 +6,10 @@ import styles from "./page.module.scss";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "OPEN Späti",
+};
+
 const getData = async () => {
   const res = await fetch(
     `${process.env.SITE_BASE_URL}/.netlify/functions/getContributions`,
