@@ -1,0 +1,108 @@
+.main {
+  padding-top: 0.2rem;
+}
+
+.navigation {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-family: "__Raleway_Dots_7a833b", "__Raleway_Dots_Fallback_7a833b";
+  color: black;
+  font-weight: bold;
+  font-size: 1.4rem;
+
+  .navigatonRow {
+    display: flex block;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    .logo {
+      width: 50%;
+      height: auto;
+      max-width: 300px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: unset;
+    display: flex block;
+    justify-content: center;
+    align-items: center;
+    gap: 1.4rem;
+    margin-bottom: 0.6rem;
+
+    li {
+      padding: unset;
+    }
+  }
+
+  .email {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.text {
+  font-family: "__Raleway_Dots_7a833b", "__Raleway_Dots_Fallback_7a833b";
+  padding: 2rem;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.codeOfConduct {
+  display: block;
+  padding: 2rem;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "__Raleway_Dots_7a833b", "__Raleway_Dots_Fallback_7a833b";
+  color: black;
+  font-weight: bold;
+  .codeOfConductHeadline {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+}
+
+.submitGoup {
+  display: flex block;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-content: center;
+
+  input {
+    padding: 1rem;
+    width: 300px;
+    font-size: 1.4rem;
+    border: 1px dotted black;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
+  button {
+    border: 1px dotted black;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    background-color: #d555d0;
+    display: grid;
+    align-items: center;
+    padding: 1rem;
+
+    svg {
+      color: white;
+      width: 1.4rem;
+    }
+  }
+}

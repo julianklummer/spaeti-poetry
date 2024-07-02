@@ -1,0 +1,15 @@
+.contributionList {
+  list-style: none;
+  padding: unset;
+  margin-bottom: 0.6rem;
+  max-width: 700px;
+  margin: 0 auto;
+
+  li {
+    padding: unset;
+    margin-bottom: 0.8rem;
+  }
+
+  max-height: 40vh;
+  overflow-y: auto;
+}

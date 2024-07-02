@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lora, Raleway_Dots } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 import "./globals.css";
+import styles from "./page.module.scss";
 
-const inter = Inter({ subsets: ["latin"] });
+const railwayDots = Raleway_Dots({
+  weight: "400",
+  subsets: ["latin"],
+});
+const lora = Lora({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +23,36 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${railwayDots.className} ${lora.className}`}>
+        <nav className={styles.navigation}>
+          <a href="/" title="start">
+            <span className={styles.navigatonRow}>
+              <Image
+                className={styles.logo}
+                src="/logo.png"
+                width="1600"
+                height="800"
+                alt="Logo"
+              />
+            </span>
+          </a>
+          <ul>
+            <li>
+              <Link href="/about">About</Link>
+            </li>
+            <li>
+              <Link
+                href="https://www.instagram.com/open.spaeti/"
+                target="_blank"
+              >
+                Instagram
+              </Link>
+            </li>
+          </ul>
+          <span className={styles.email}>open.spaeti[at]gmail.com</span>
+        </nav>
+        {children}
+      </body>
     </html>
   );
 }
